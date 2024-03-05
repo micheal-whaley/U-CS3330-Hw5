@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstractPizza {
-	private List<Toppings> toppingList;
+	protected List<Toppings> toppingList;
 	private double priceWithoutToppings;
 	private double totalPrice;
 	private int pizzaOrderID;

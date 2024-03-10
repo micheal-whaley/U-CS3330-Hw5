@@ -20,7 +20,7 @@ public abstract class AbstractPizza {
 		public boolean cook(AbstractPizza pizza){
 			pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+10.0);
 			pizza.setCookingPrice(10.0);
-			//pizza.setCookingStrategy(BrickOvenCookingStrategy); // NEEDS TO BE FIXED
+			//pizza.setCookingStrategy(ICookingStrategy); // NEEDS TO BE FIXED
 			
 			return true;
 		}
@@ -76,6 +76,9 @@ public abstract class AbstractPizza {
 		MICROWAVE, CONVENTIONAL_OVEN, BRICK_OVEN
 	}
 	
+	public AbstractPizza() {
+		
+	}
 	
 	public AbstractPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID, int orderIDCounter,
 			ICookingStrategy cookingStrategy, double cookingPrice){

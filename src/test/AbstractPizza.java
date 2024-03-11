@@ -12,35 +12,39 @@ public abstract class AbstractPizza {
 	private ICookingStrategy cookingStrategy;
 	private double cookingPrice;
 	
-	interface ICookingStrategy {
+	public interface ICookingStrategy {
 		public boolean cook(AbstractPizza pizza);
 	}
 	
 	class BrickOvenCookingStrategy implements ICookingStrategy {
+		private ICookingStrategy BrickOvenCookingStrategy;
+
 		public boolean cook(AbstractPizza pizza){
 			pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+10.0);
 			pizza.setCookingPrice(10.0);
-			//pizza.setCookingStrategy(ICookingStrategy); // NEEDS TO BE FIXED
+			pizza.setCookingStrategy((ICookingStrategy)BrickOvenCookingStrategy); // NEEDS TO BE FIXED
 			
 			return true;
 		}
 	}
 	
 	class ConventionalOvenCookingStrategy implements ICookingStrategy {
+		private ICookingStrategy ConventionalOvenCookingStrategy;
 		public boolean cook(AbstractPizza pizza){
 			pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+8.0);
 			pizza.setCookingPrice(8.0);
-			//pizza.setCookingStrategy(ConventionalOvenCookingStrategy); // NEEDS TO BE FIXED
+			pizza.setCookingStrategy((ICookingStrategy)ConventionalOvenCookingStrategy); // NEEDS TO BE FIXED
 			
 			return true;
 		}
 	}
 	
 	class MicrowaveCookingStrategy implements ICookingStrategy {
+		private ICookingStrategy MicrowaveCookingStrategy;
 		public boolean cook(AbstractPizza pizza){
 			pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+1.0);
 			pizza.setCookingPrice(1.0);
-			//pizza.setCookingStrategy(MicrowaveCookingStrategy); // NEEDS TO BE FIXED
+			pizza.setCookingStrategy((ICookingStrategy)MicrowaveCookingStrategy); // NEEDS TO BE FIXED
 			
 			return true;
 		}
@@ -80,16 +84,15 @@ public abstract class AbstractPizza {
 		
 	}
 	
-	public AbstractPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID, int orderIDCounter,
-			ICookingStrategy cookingStrategy, double cookingPrice){
+	public AbstractPizza(List<Toppings> toppingList){
 		//this.toppingList = toppingList; Don't know if this is needed
 		this.toppingList = new ArrayList<Toppings>();
-		this.priceWithoutToppings = priceWithoutToppings;
-		this.totalPrice = totalPrice;
-		this.pizzaOrderID = pizzaOrderID;
-		//this.orderIDCounter = orderIDCounter; I don't know if this is needed yet
-		this.cookingStrategy = cookingStrategy;
-		this.cookingPrice = cookingPrice;
+//		this.priceWithoutToppings = priceWithoutToppings;
+//		this.totalPrice = totalPrice;
+		this.pizzaOrderID = orderIDCounter;
+//		//this.orderIDCounter = orderIDCounter; I don't know if this is needed yet
+//		this.cookingStrategy = cookingStrategy;
+//		this.cookingPrice = cookingPrice;
 	}
 
 

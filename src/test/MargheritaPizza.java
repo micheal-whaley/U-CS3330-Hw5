@@ -6,15 +6,14 @@ public class MargheritaPizza extends AbstractPizza{
 
     public MargheritaPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
             int orderIDCounter, ICookingStrategy cookingStrategy, double cookingPrice) {
-        super(toppingList, priceWithoutToppings, totalPrice, pizzaOrderID, orderIDCounter, cookingStrategy, cookingPrice);
+        super(toppingList);
         this.toppingList.add(Toppings.TOMATO); // default toppings
         this.toppingList.add(Toppings.CHEESE);
         this.setPriceWithoutToppings(2.50);
         //TODO Auto-generated constructor stub
     }
     public MargheritaPizza(MargheritaPizza Pizza){
-        super(Pizza.toppingList, Pizza.getPriceWithoutToppings(), Pizza.getTotalPrice(), Pizza.getPizzaOrderID(),
-        AbstractPizza.getOrderIDCounter(), Pizza.getCookingStrategy(), Pizza.getCookingPrice());
+        super(Pizza.toppingList);
       }     
    
       public String toString() {

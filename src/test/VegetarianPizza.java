@@ -6,7 +6,7 @@ public class VegetarianPizza extends AbstractPizza{
 
     public VegetarianPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
             int orderIDCounter, ICookingStrategy cookingStrategy, double cookingPrice) {
-        super(toppingList, priceWithoutToppings, totalPrice, pizzaOrderID, orderIDCounter, cookingStrategy, cookingPrice);
+        super(toppingList);
         this.toppingList.add(Toppings.TOMATO); // default toppings
         this.toppingList.add(Toppings.CHEESE);
         this.toppingList.add(Toppings.BELL_PEPPER);
@@ -17,8 +17,7 @@ public class VegetarianPizza extends AbstractPizza{
     }
 
     public VegetarianPizza(VegetarianPizza Pizza){
-        super(Pizza.toppingList, Pizza.getPriceWithoutToppings(), Pizza.getTotalPrice(), Pizza.getPizzaOrderID(),
-        AbstractPizza.getOrderIDCounter(), Pizza.getCookingStrategy(), Pizza.getCookingPrice());
+        super(Pizza.toppingList);
       }     
       public String toString() {
         return String.format("Vegetarian Pizza Here is list of Toppings: %s, Price Without Toppings: %.2f, Total Price: %.2f, Pizza Order ID: %d, Order ID Counter: %d, Cooking Strategy: %s, Cooking Price: %.2f }",

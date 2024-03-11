@@ -21,35 +21,35 @@ public class PizzaOrder {
 		
 	}
 	
-//	public void printPizzaOrderCart(int orderID) {
+//	public void printPizzaOrderCart(int orderID) { Mel
 //		
 //	}
 //	
-//	public AbstractPizza getPizzaByOrderID(int orderID) {
+//	public AbstractPizza getPizzaByOrderID(int orderID) { Mel
 //		
 //	}
 //	
-//	public boolean addPizzaToCart(PizzaType pizzaType) {
+//	public boolean addPizzaToCart(PizzaType pizzaType) { Mel
 //		
 //	}
 //	
-//	public boolean addNewToppingToPizza(int orderID, Toppings topping) {
+//	public boolean addNewToppingToPizza(int orderID, Toppings topping) { Temi
 //		
 //	}
 //	
-//	public boolean removeToppingFromPizza(int orderID, Toppings topping) {
+//	public boolean removeToppingFromPizza(int orderID, Toppings topping) { Temi
 //		
 //	}
 //	
-//	public boolean isThereAnyUncookedPizza() {
+//	public boolean isThereAnyUncookedPizza() { Temi
 //		
 //	}
 //	
-//	public double checkout() throws Exception {
+//	public double checkout() throws Exception { Van
 //		
 //	}
 //	
-//	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
+//	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) { Van
 //		
 //	}
 }

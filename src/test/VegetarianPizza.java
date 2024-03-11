@@ -2,15 +2,12 @@ package test;
 
 import java.util.List;
 
+import enums.Toppings;
+
 public class VegetarianPizza extends AbstractPizza{
 
     public VegetarianPizza(List<Toppings> toppingList) {
         super(toppingList);
-        this.toppingList.add(Toppings.TOMATO); // default toppings
-        this.toppingList.add(Toppings.CHEESE);
-        this.toppingList.add(Toppings.BELL_PEPPER);
-        this.toppingList.add(Toppings.BLACK_OLIVE);
-        this.toppingList.add(Toppings.MUSHROOM);
         this.setPriceWithoutToppings(1.50);
         //TODO Auto-generated constructor stub TOMATO, CHEESE, BELL_PEPPER, BLACK_OLIVE, MUSHROOM
     }

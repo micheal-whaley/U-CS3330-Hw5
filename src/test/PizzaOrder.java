@@ -2,10 +2,10 @@ package test;
 
 import java.util.List;
 
-import test.AbstractPizza.CookingStyleType;
-import test.AbstractPizza.ICookingStrategy;
-import test.AbstractPizza.PizzaType;
-import test.AbstractPizza.Toppings;
+import enums.CookingStyleType;
+import enums.Toppings;
+import interfaces.ICookingStrategy;
+import enums.PizzaType;
 
 public class PizzaOrder {
 	private PizzaCookingFactory pizzaFactory;

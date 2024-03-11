@@ -3,6 +3,9 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
+import enums.Toppings;
+import interfaces.ICookingStrategy;
+
 public abstract class AbstractPizza {
 	protected List<Toppings> toppingList;
 	private double priceWithoutToppings;
@@ -11,74 +14,6 @@ public abstract class AbstractPizza {
 	private static int orderIDCounter;
 	private ICookingStrategy cookingStrategy;
 	private double cookingPrice;
-	
-	public interface ICookingStrategy {
-		public boolean cook(AbstractPizza pizza);
-	}
-	
-	class BrickOvenCookingStrategy implements ICookingStrategy {
-		private ICookingStrategy BrickOvenCookingStrategy;
-
-		public boolean cook(AbstractPizza pizza){
-			pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+10.0);
-			pizza.setCookingPrice(10.0);
-			pizza.setCookingStrategy((ICookingStrategy)BrickOvenCookingStrategy); // NEEDS TO BE FIXED
-			
-			return true;
-		}
-	}
-	
-	class ConventionalOvenCookingStrategy implements ICookingStrategy {
-		private ICookingStrategy ConventionalOvenCookingStrategy;
-		public boolean cook(AbstractPizza pizza){
-			pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+8.0);
-			pizza.setCookingPrice(8.0);
-			pizza.setCookingStrategy((ICookingStrategy)ConventionalOvenCookingStrategy); // NEEDS TO BE FIXED
-			
-			return true;
-		}
-	}
-	
-	class MicrowaveCookingStrategy implements ICookingStrategy {
-		private ICookingStrategy MicrowaveCookingStrategy;
-		public boolean cook(AbstractPizza pizza){
-			pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+1.0);
-			pizza.setCookingPrice(1.0);
-			pizza.setCookingStrategy((ICookingStrategy)MicrowaveCookingStrategy); // NEEDS TO BE FIXED
-			
-			return true;
-		}
-	}
-	
-	public enum PizzaType {
-		HAWAIIAN,MARGHERITA,SUPREME,VEGETARIAN
-	}
-	public enum Toppings { // toppings enums
-		TOMATO(1.50),
-		CHEESE(2.00),
-		PINEAPPLE(2.50),
-		BLACK_OLIVE(1.25),
-		ITALIAN_SAUSAGE(3.50),
-		PEPPERONI(3.00),
-		BELL_PEPPER(1.00),
-		MUSHROOM(1.50),
-		CANADIAN_BACON(4.00);
-		private double toppingPrice;
-		
-		Toppings(double d) {
-			this.setToppingPrice(d); // price initializer
-		}
-		public double getToppingPrice() { // price getter
-			return toppingPrice;
-		}
-		public void setToppingPrice(double toppingPrice) { //price setter
-			this.toppingPrice = toppingPrice;
-		}
-    }
-	
-	public enum CookingStyleType {
-		MICROWAVE, CONVENTIONAL_OVEN, BRICK_OVEN
-	}
 	
 	public AbstractPizza() {
 		

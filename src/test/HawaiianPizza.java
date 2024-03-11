@@ -2,6 +2,8 @@ package test;
 
 import java.util.List;
 
+import enums.Toppings;
+
 public class HawaiianPizza extends AbstractPizza{
 	
 	public HawaiianPizza() {
@@ -10,11 +12,12 @@ public class HawaiianPizza extends AbstractPizza{
 
     public HawaiianPizza(List<Toppings> toppingList) {
         super(toppingList);
-        this.toppingList.add(Toppings.CANADIAN_BACON); // default toppings added
-        this.toppingList.add(Toppings.CHEESE);
-        this.toppingList.add(Toppings.PINEAPPLE);
         this.setPriceWithoutToppings(3.00);
-        //TODO Auto-generated constructor stub
+        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1);
+        this.setPizzaOrderID(getOrderIDCounter());
+        this.setTotalPrice(3.00);
+        this.setCookingPrice(0);
+        
     }
       public HawaiianPizza(HawaiianPizza Pizza){ // this needs to be changed for all pizzas
     	  super(Pizza.toppingList);

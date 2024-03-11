@@ -26,9 +26,24 @@ public class PizzaOrder {
 		}
 	}
 	
-//	public void printPizzaOrderCart(int orderID) { Mel
-//		
-//	}
+public void printPizzaOrderCart(int orderID) { 
+	public void printPizzaOrderCart(int orderID) {
+		for (AbstractPizza p: pizzaOrderList) { //loops through each abstractpizza object
+			if (p.getPizzaOrderID() == orderID) {
+				System.out.println("Order details for order" + orderID);
+				System.out.println("Toppings");
+				for (Toppings topping: p.getToppingList()) {
+					System.out.println("" + topping);
+				}
+				System.out.println("Price without toppings:"+ p.getPriceWithoutToppings());
+				System.out.println("Total price" + p.getTotalPrice());
+				System.out.println("Cooking Strategey:" + p.getCookingStrategy() );
+			}
+		}
+		
+	}
+		
+}
 //	
 //	public AbstractPizza getPizzaByOrderID(int orderID) { Mel
 //		

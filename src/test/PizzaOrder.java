@@ -44,10 +44,15 @@ public void printPizzaOrderCart(int orderID) {
 	}
 		
 }
-//	
-//	public AbstractPizza getPizzaByOrderID(int orderID) { Mel
-//		
-//	}
+//	finds the pizza order with the given pizza order id and returns it.
+public AbstractPizza getPizzaByOrderID(int orderID) { 
+	for (AbstractPizza p: piizaOrderList){
+		if(p.getPizzaOrderID() == orderID){
+			return p;
+		}
+	}
+	return null;	//retnrs null if order id does not exist 
+}
 //	
 //	public boolean addPizzaToCart(PizzaType pizzaType) { Mel
 //		

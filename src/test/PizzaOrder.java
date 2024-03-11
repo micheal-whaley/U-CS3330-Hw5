@@ -46,7 +46,7 @@ public void printPizzaOrderCart(int orderID) {
 }
 //	finds the pizza order with the given pizza order id and returns it.
 public AbstractPizza getPizzaByOrderID(int orderID) { 
-	for (AbstractPizza p: piizaOrderList){
+	for (AbstractPizza p: pizzaOrderList){
 		if(p.getPizzaOrderID() == orderID){
 			return p;
 		}
@@ -70,9 +70,10 @@ public AbstractPizza getPizzaByOrderID(int orderID) {
 //		
 //	}
 //	
-//	public double checkout() throws Exception { Van
-//		
-//	}
+	public double checkout() throws Exception { // Van
+
+		return 0.0;
+	}
 //	
 //	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) { Van
 //		

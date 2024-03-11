@@ -6,12 +6,15 @@ import enums.Toppings;
 
 public class VegetarianPizza extends AbstractPizza{
 
-    public VegetarianPizza(List<Toppings> toppingList) {
-        super(toppingList);
+    public VegetarianPizza(int orderID) {
+        super(orderID);
         this.setPriceWithoutToppings(1.50); // price with no toppings
-        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1); // increments id counter and then sets orderID
-        this.setPizzaOrderID(getOrderIDCounter());
         this.setCookingPrice(0); // no cookingprice or strategy set at default
+        this.toppingList.add(Toppings.TOMATO); // default vegetarian toppings
+        this.toppingList.add(Toppings.CHEESE);
+        this.toppingList.add(Toppings.BELL_PEPPER);
+        this.toppingList.add(Toppings.BLACK_OLIVE);
+        this.toppingList.add(Toppings.MUSHROOM);
         double baseToppingCost = 0;
         for(Toppings a: toppingList) { // loops through adding toppingprice to overall cost
         	baseToppingCost+=a.getToppingPrice();

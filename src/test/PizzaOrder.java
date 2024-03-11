@@ -21,7 +21,7 @@ public class PizzaOrder {
 	public void printListOfToppingsByPizzaOrderID(int orderID) { // loops through order list and prints to string pizzas;
 		for(AbstractPizza p : pizzaOrderList) {
 			if (p.getPizzaOrderID() == orderID) {
-				p.toString();
+				System.out.println(p.toString());
 			}
 		}
 	}

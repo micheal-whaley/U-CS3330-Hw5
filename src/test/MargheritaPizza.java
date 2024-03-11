@@ -8,15 +8,18 @@ public class MargheritaPizza extends AbstractPizza{
 
     public MargheritaPizza(List<Toppings> toppingList) {
         super(toppingList);
-        this.setPriceWithoutToppings(2.50);
-        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1);
+        this.setPriceWithoutToppings(2.50); // price with no toppings
+        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1); // increments id counter and then sets orderID
         this.setPizzaOrderID(getOrderIDCounter());
-        this.setTotalPrice(2.50);
-        this.setCookingPrice(0);
-        //TODO Auto-generated constructor stub
+        this.setCookingPrice(0); // no cookingprice or strategy set at default
+        double baseToppingCost = 0;
+        for(Toppings a: toppingList) { // loops through adding toppingprice to overall cost
+        	baseToppingCost+=a.getToppingPrice();
+        }
+        this.setTotalPrice(2.50+baseToppingCost);
     }
     public MargheritaPizza(MargheritaPizza Pizza){
-        super(Pizza.toppingList);
+  	  super(Pizza.getToppingList(), Pizza.getPriceWithoutToppings(), Pizza.getTotalPrice(), Pizza.getPizzaOrderID(), Pizza.getCookingStrategy(), Pizza.getCookingPrice());
       }     
    
       public String toString() {

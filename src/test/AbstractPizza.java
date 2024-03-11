@@ -27,6 +27,20 @@ public abstract class AbstractPizza {
 	}
 
 
+
+	public AbstractPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
+			ICookingStrategy cookingStrategy, double cookingPrice) {
+		super();
+		this.toppingList = toppingList;
+		this.priceWithoutToppings = priceWithoutToppings;
+		this.totalPrice = totalPrice;
+		this.pizzaOrderID = pizzaOrderID;
+		this.cookingStrategy = cookingStrategy;
+		this.cookingPrice = cookingPrice;
+	}
+
+
+
 	public List<Toppings> getToppingList() {
 		return toppingList;
 	}

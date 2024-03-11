@@ -1,5 +1,6 @@
 package test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import enums.CookingStyleType;
@@ -12,13 +13,17 @@ public class PizzaOrder {
 	private ICookingStrategy cookingStrategy;
 	private List<AbstractPizza> pizzaOrderList;
 	
-	public PizzaOrder(PizzaCookingFactory pizzaFactory, List<AbstractPizza> pizzaOrderList) {
-		this.pizzaFactory = pizzaFactory;
-		this.pizzaOrderList = pizzaOrderList;
+	public PizzaOrder() {
+		this.pizzaFactory = new PizzaCookingFactory();
+		this.pizzaOrderList = new ArrayList<AbstractPizza>();
 	}
 	
-	public void printListOfToppingsByPizzaOrderID(int orderID) {
-		
+	public void printListOfToppingsByPizzaOrderID(int orderID) { // loops through order list and prints to string pizzas;
+		for(AbstractPizza p : pizzaOrderList) {
+			if (p.getPizzaOrderID() == orderID) {
+				p.toString();
+			}
+		}
 	}
 	
 //	public void printPizzaOrderCart(int orderID) { Mel

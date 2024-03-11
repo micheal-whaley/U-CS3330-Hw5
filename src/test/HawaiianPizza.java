@@ -8,17 +8,20 @@ public class HawaiianPizza extends AbstractPizza{
 
     public HawaiianPizza(List<Toppings> toppingList) {
         super(toppingList);
-        this.setPriceWithoutToppings(3.00);
-        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1);
+        this.setPriceWithoutToppings(3.00); // price with no toppings
+        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1); // increments id counter and then sets orderID
         this.setPizzaOrderID(getOrderIDCounter());
-        this.setTotalPrice(3.00);
-        this.setCookingPrice(0);
-        
+        this.setCookingPrice(0); // no cookingprice or strategy set at default
+        double baseToppingCost = 0;
+        for(Toppings a: toppingList) { // loops through adding toppingprice to overall cost
+        	baseToppingCost+=a.getToppingPrice();
+        }
+        this.setTotalPrice(3.00+baseToppingCost);
     }
-      public HawaiianPizza(HawaiianPizza Pizza){ // this needs to be changed for all pizzas
-    	  super(Pizza.toppingList);
+      public HawaiianPizza(HawaiianPizza Pizza){
+    	  super(Pizza.getToppingList(), Pizza.getPriceWithoutToppings(), Pizza.getTotalPrice(), Pizza.getPizzaOrderID(), Pizza.getCookingStrategy(), Pizza.getCookingPrice());
       }     
-      public String toString() {
+	public String toString() {
         return String.format("Hawaiian Pizza Here is list of Toppings: %s, Price Without Toppings: %.2f, Total Price: %.2f, Pizza Order ID: %d, Order ID Counter: %d, Cooking Strategy: %s, Cooking Price: %.2f }",
                 getToppingList().toString(),
                 getPriceWithoutToppings(),

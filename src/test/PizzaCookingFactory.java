@@ -11,33 +11,20 @@ public class PizzaCookingFactory {
 
 	public AbstractPizza createPizza(PizzaType pizzatype) {
 		if (pizzatype == PizzaType.HAWAIIAN) {
-				this.toppingList.add(Toppings.CANADIAN_BACON); // default hawaiian toppings added
-				this.toppingList.add(Toppings.CHEESE);
-				this.toppingList.add(Toppings.PINEAPPLE);
-				HawaiianPizza pizza = new HawaiianPizza(toppingList);
+				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
+				HawaiianPizza pizza = new HawaiianPizza(AbstractPizza.getOrderIDCounter());
 				return pizza;
 		} else if (pizzatype == PizzaType.MARGHERITA) {	
-		        this.toppingList.add(Toppings.TOMATO); // default margherita toppings
-		        this.toppingList.add(Toppings.CHEESE);
-				MargheritaPizza pizza = new MargheritaPizza(toppingList);
+				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
+				MargheritaPizza pizza = new MargheritaPizza(AbstractPizza.getOrderIDCounter());
 				return pizza;
 		} else if (pizzatype == PizzaType.SUPREME) {
-		        this.toppingList.add(Toppings.TOMATO); // default supreme toppings
-		        this.toppingList.add(Toppings.CHEESE);
-		        this.toppingList.add(Toppings.BELL_PEPPER);
-		        this.toppingList.add(Toppings.ITALIAN_SAUSAGE);
-		        this.toppingList.add(Toppings.PEPPERONI);
-		        this.toppingList.add(Toppings.BLACK_OLIVE);
-		        this.toppingList.add(Toppings.MUSHROOM);
-		        SupremePizza pizza = new SupremePizza(toppingList);
+				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
+		        SupremePizza pizza = new SupremePizza(AbstractPizza.getOrderIDCounter());
 				return pizza;
 		} else {
-		        this.toppingList.add(Toppings.TOMATO); // default vegetarian toppings
-		        this.toppingList.add(Toppings.CHEESE);
-		        this.toppingList.add(Toppings.BELL_PEPPER);
-		        this.toppingList.add(Toppings.BLACK_OLIVE);
-		        this.toppingList.add(Toppings.MUSHROOM);
-		        VegetarianPizza pizza = new VegetarianPizza(toppingList);
+				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
+		        VegetarianPizza pizza = new VegetarianPizza(AbstractPizza.getOrderIDCounter());
 				return pizza;
 		}
 	}

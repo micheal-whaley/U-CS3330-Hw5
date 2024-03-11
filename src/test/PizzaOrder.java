@@ -51,12 +51,28 @@ public AbstractPizza getPizzaByOrderID(int orderID) {
 			return p;
 		}
 	}
-	return null;	//retnrs null if order id does not exist 
+	return null;	//returns null if order id does not exist 
 }
-//	
-//	public boolean addPizzaToCart(PizzaType pizzaType) { Mel
-//		
-//	}
+	
+	public boolean addPizzaToCart(int orderID, Toppings topping ) { 
+		for (AbstractPizza pizza: pizzaOrderList){
+			if(pizza.getPizzaOrderID() == orderID){
+				//checking if the topping exists in the topping list 
+				if(!pizza.getToppingList().contains(topping)){
+					//add if it doesn't exist
+					pizza.getToppingList().add(topping);
+					//update the pizza price
+					double price = pizza.getPriceWithoutToppings() + toppings.getPrice(topping);
+					pizza.setTotalPrice(price);
+					return true; //added 
+				}
+				else{
+					return false;
+				}
+			}
+		}
+	
+	}
 //	
 //	public boolean addNewToppingToPizza(int orderID, Toppings topping) { Temi
 //		

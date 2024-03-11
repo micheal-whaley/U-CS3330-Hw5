@@ -1,17 +1,20 @@
 package test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import enums.Toppings;
 
 public class HawaiianPizza extends AbstractPizza{
 
-    public HawaiianPizza(List<Toppings> toppingList) {
-        super(toppingList);
+    public HawaiianPizza(int orderID) {
+        super(orderID);
+        this.toppingList = new ArrayList<Toppings>();
         this.setPriceWithoutToppings(3.00); // price with no toppings
-        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1); // increments id counter and then sets orderID
-        this.setPizzaOrderID(getOrderIDCounter());
         this.setCookingPrice(0); // no cookingprice or strategy set at default
+        this.toppingList.add(Toppings.CANADIAN_BACON); // default hawaiian toppings added
+		this.toppingList.add(Toppings.CHEESE);
+		this.toppingList.add(Toppings.PINEAPPLE);
         double baseToppingCost = 0;
         for(Toppings a: toppingList) { // loops through adding toppingprice to overall cost
         	baseToppingCost+=a.getToppingPrice();

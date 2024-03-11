@@ -8,8 +8,7 @@ public class HawaiianPizza extends AbstractPizza{
 		
 	}
 
-    public HawaiianPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
-            int orderIDCounter, ICookingStrategy cookingStrategy, double cookingPrice) {
+    public HawaiianPizza(List<Toppings> toppingList) {
         super(toppingList);
         this.toppingList.add(Toppings.CANADIAN_BACON); // default toppings added
         this.toppingList.add(Toppings.CHEESE);

@@ -4,8 +4,7 @@ import java.util.List;
 
 public class MargheritaPizza extends AbstractPizza{
 
-    public MargheritaPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
-            int orderIDCounter, ICookingStrategy cookingStrategy, double cookingPrice) {
+    public MargheritaPizza(List<Toppings> toppingList) {
         super(toppingList);
         this.toppingList.add(Toppings.TOMATO); // default toppings
         this.toppingList.add(Toppings.CHEESE);

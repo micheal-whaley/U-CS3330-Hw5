@@ -15,16 +15,12 @@ public abstract class AbstractPizza {
 	private ICookingStrategy cookingStrategy;
 	private double cookingPrice;
 	
-	public AbstractPizza() {
-		
-	}
-	
 	public AbstractPizza(List<Toppings> toppingList){
 		//this.toppingList = toppingList; Don't know if this is needed
 		this.toppingList = new ArrayList<Toppings>();
 //		this.priceWithoutToppings = priceWithoutToppings;
 //		this.totalPrice = totalPrice;
-		this.pizzaOrderID = orderIDCounter;
+//		this.pizzaOrderID = orderIDCounter;
 //		//this.orderIDCounter = orderIDCounter; I don't know if this is needed yet
 //		this.cookingStrategy = cookingStrategy;
 //		this.cookingPrice = cookingPrice;

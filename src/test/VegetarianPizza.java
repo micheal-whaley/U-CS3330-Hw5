@@ -9,7 +9,10 @@ public class VegetarianPizza extends AbstractPizza{
     public VegetarianPizza(List<Toppings> toppingList) {
         super(toppingList);
         this.setPriceWithoutToppings(1.50);
-        //TODO Auto-generated constructor stub TOMATO, CHEESE, BELL_PEPPER, BLACK_OLIVE, MUSHROOM
+        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1);
+        this.setPizzaOrderID(getOrderIDCounter());
+        this.setTotalPrice(1.50);
+        this.setCookingPrice(0);
     }
 
     public VegetarianPizza(VegetarianPizza Pizza){

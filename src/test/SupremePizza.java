@@ -9,6 +9,10 @@ public class SupremePizza extends AbstractPizza{
     public SupremePizza(List<Toppings> toppingList) {
         super(toppingList);
         this.setPriceWithoutToppings(3.50);
+        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1);
+        this.setPizzaOrderID(getOrderIDCounter());
+        this.setTotalPrice(3.50);
+        this.setCookingPrice(0);
         //TODO Auto-generated constructor stub
     }
     public SupremePizza(SupremePizza Pizza){

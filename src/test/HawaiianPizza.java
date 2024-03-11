@@ -5,10 +5,6 @@ import java.util.List;
 import enums.Toppings;
 
 public class HawaiianPizza extends AbstractPizza{
-	
-	public HawaiianPizza() {
-		
-	}
 
     public HawaiianPizza(List<Toppings> toppingList) {
         super(toppingList);

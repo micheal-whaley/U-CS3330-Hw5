@@ -9,6 +9,10 @@ public class MargheritaPizza extends AbstractPizza{
     public MargheritaPizza(List<Toppings> toppingList) {
         super(toppingList);
         this.setPriceWithoutToppings(2.50);
+        AbstractPizza.setOrderIDCounter(getOrderIDCounter()+1);
+        this.setPizzaOrderID(getOrderIDCounter());
+        this.setTotalPrice(2.50);
+        this.setCookingPrice(0);
         //TODO Auto-generated constructor stub
     }
     public MargheritaPizza(MargheritaPizza Pizza){

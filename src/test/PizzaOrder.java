@@ -26,13 +26,33 @@ public class PizzaOrder {
 		}
 	}
 	
-//	public void printPizzaOrderCart(int orderID) { Mel
-//		
-//	}
-//	
-//	public AbstractPizza getPizzaByOrderID(int orderID) { Mel
-//		
-//	}
+public void printPizzaOrderCart(int orderID) { 
+	public void printPizzaOrderCart(int orderID) {
+		for (AbstractPizza p: pizzaOrderList) { //loops through each abstractpizza object
+			if (p.getPizzaOrderID() == orderID) {
+				System.out.println("Order details for order" + orderID);
+				System.out.println("Toppings");
+				for (Toppings topping: p.getToppingList()) {
+					System.out.println("" + topping);
+				}
+				System.out.println("Price without toppings:"+ p.getPriceWithoutToppings());
+				System.out.println("Total price" + p.getTotalPrice());
+				System.out.println("Cooking Strategey:" + p.getCookingStrategy() );
+			}
+		}
+		
+	}
+		
+}
+//	finds the pizza order with the given pizza order id and returns it.
+public AbstractPizza getPizzaByOrderID(int orderID) { 
+	for (AbstractPizza p: piizaOrderList){
+		if(p.getPizzaOrderID() == orderID){
+			return p;
+		}
+	}
+	return null;	//retnrs null if order id does not exist 
+}
 //	
 //	public boolean addPizzaToCart(PizzaType pizzaType) { Mel
 //		

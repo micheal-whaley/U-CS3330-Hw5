@@ -25,8 +25,6 @@ public class PizzaOrder {
 			}
 		}
 	}
-	
-public void printPizzaOrderCart(int orderID) { 
 	public void printPizzaOrderCart(int orderID) {
 		for (AbstractPizza p: pizzaOrderList) { //loops through each abstractpizza object
 			if (p.getPizzaOrderID() == orderID) {

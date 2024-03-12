@@ -73,18 +73,54 @@ public AbstractPizza getPizzaByOrderID(int orderID) {
 		}
 	
 	}
-//	
-//	public boolean addNewToppingToPizza(int orderID, Toppings topping) { Temi
-//		
-//	}
-//	
-//	public boolean removeToppingFromPizza(int orderID, Toppings topping) { Temi
-//		
-//	}
-//	
-//	public boolean isThereAnyUncookedPizza() { Temi
-//		
-//	}
+	
+	public boolean addNewToppingToPizza(int orderID, Toppings topping) {
+		AbstractPizza pizza = getPizzaByOrderID(orderID);
+		if (pizza != null) {
+			if (!pizza.getToppingList().contains(topping)) {
+				// Add the topping if it doesn't exist
+				pizza.getToppingList().add(topping);
+				// Calculate price of topping
+				double toppingPrice = topping.getToppingPrice();
+				// Update the pizza price
+				double newTotalPrice = pizza.getTotalPrice() + toppingPrice;
+				pizza.setTotalPrice(newTotalPrice);
+				return true; // Topping added successfully
+			} else {
+				return false;
+			}
+		}
+		return false; // Pizza with given orderID not found
+	}
+	
+
+	public boolean removeToppingFromPizza(int orderID, Toppings topping) {
+		AbstractPizza pizza = getPizzaByOrderID(orderID);
+		if (pizza != null) {
+			// Check if the topping exists in the topping list
+			if (pizza.getToppingList().contains(topping)) {
+				// Remove the topping
+				pizza.getToppingList().remove(topping);
+				// Adjust the pizza price
+				double toppingPrice = topping.getToppingPrice();
+				double newTotalPrice = pizza.getTotalPrice() - toppingPrice;
+				pizza.setTotalPrice(newTotalPrice);
+				return true; // Topping removed successfully
+			} else {
+				return false; // Topping doesn't exist
+			}
+		}
+		return false; // Pizza with given orderID not found
+	}
+	
+	public boolean isThereAnyUncookedPizza() {
+		for (AbstractPizza pizza : pizzaOrderList) {
+			if (pizza.getCookingStrategy() == null) {
+				return true; // Found an uncooked pizza
+			}
+		}
+		return false; // No uncooked pizzas found
+	}
 //	
 //	public double checkout() throws Exception { Van
 //		

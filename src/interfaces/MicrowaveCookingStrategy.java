@@ -2,7 +2,7 @@ package interfaces;
 
 import test.AbstractPizza;
 
-class MicrowaveCookingStrategy implements ICookingStrategy {
+public class MicrowaveCookingStrategy implements ICookingStrategy {
 
 	public boolean cook(AbstractPizza pizza){
 		pizza.setTotalPrice(pizza.getTotalPrice()-pizza.getCookingPrice()+1.0);

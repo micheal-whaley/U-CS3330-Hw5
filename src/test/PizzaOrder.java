@@ -5,12 +5,15 @@ import java.util.List;
 
 import enums.CookingStyleType;
 import enums.Toppings;
-import interfaces.ICookingStrategy;
+import interfaces.*;
 import enums.PizzaType;
 
 public class PizzaOrder {
 	private PizzaCookingFactory pizzaFactory;
 	private ICookingStrategy cookingStrategy;
+	ICookingStrategy brickStrategy = new BrickOvenCookingStrategy();
+	ICookingStrategy microwaveStrategy = new MicrowaveCookingStrategy();
+	ICookingStrategy conventionalStrategy = new ConventionalOvenCookingStrategy();
 	private List<AbstractPizza> pizzaOrderList;
 	
 	public PizzaOrder() {
@@ -26,72 +29,88 @@ public class PizzaOrder {
 		}
 	}
 	
-public void printPizzaOrderCart(int orderID) { 
-	public void printPizzaOrderCart(int orderID) {
-		for (AbstractPizza p: pizzaOrderList) { //loops through each abstractpizza object
-			if (p.getPizzaOrderID() == orderID) {
-				System.out.println("Order details for order" + orderID);
-				System.out.println("Toppings");
-				for (Toppings topping: p.getToppingList()) {
-					System.out.println("" + topping);
-				}
-				System.out.println("Price without toppings:"+ p.getPriceWithoutToppings());
-				System.out.println("Total price" + p.getTotalPrice());
-				System.out.println("Cooking Strategey:" + p.getCookingStrategy() );
-			}
-		}
-		
-	}
-		
-}
-//	finds the pizza order with the given pizza order id and returns it.
-public AbstractPizza getPizzaByOrderID(int orderID) { 
-	for (AbstractPizza p: pizzaOrderList){
-		if(p.getPizzaOrderID() == orderID){
-			return p;
-		}
-	}
-	return null;	//returns null if order id does not exist 
-}
-	
-	public boolean addPizzaToCart(int orderID, Toppings topping ) { 
-		for (AbstractPizza pizza: pizzaOrderList){
-			if(pizza.getPizzaOrderID() == orderID){
-				//checking if the topping exists in the topping list 
-				if(!pizza.getToppingList().contains(topping)){
-					//add if it doesn't exist
-					pizza.getToppingList().add(topping);
-					//update the pizza price
-					double price = pizza.getPriceWithoutToppings() + toppings.getPrice(topping);
-					pizza.setTotalPrice(price);
-					return true; //added 
-				}
-				else{
-					return false;
+	public void printPizzaOrderCart(int orderID) { 
+			for (AbstractPizza p: pizzaOrderList) { //loops through each abstractpizza object
+				if (p.getPizzaOrderID() == orderID) {
+					System.out.println("Order details for order" + orderID);
+					System.out.println("Toppings");
+					for (Toppings topping: p.getToppingList()) {
+						System.out.println("" + topping);
+					}
+					System.out.println("Price without toppings:"+ p.getPriceWithoutToppings());
+					System.out.println("Total price" + p.getTotalPrice());
+					System.out.println("Cooking Strategey:" + p.getCookingStrategy() );
 				}
 			}
+			
 		}
-	
-	}
-//	
-//	public boolean addNewToppingToPizza(int orderID, Toppings topping) { Temi
-//		
-//	}
-//	
-//	public boolean removeToppingFromPizza(int orderID, Toppings topping) { Temi
-//		
-//	}
-//	
-//	public boolean isThereAnyUncookedPizza() { Temi
-//		
-//	}
-//	
-	public double checkout() throws Exception { // Van
 
-		return 0.0;
+	//	finds the pizza order with the given pizza order id and returns it.
+	public AbstractPizza getPizzaByOrderID(int orderID) { 
+		for (AbstractPizza p: pizzaOrderList){
+			if(p.getPizzaOrderID() == orderID){
+				return p;
+			}
+		}
+		return null;	//returns null if order id does not exist 
 	}
-//	
-//	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) { Van
-//		
-//	}
+		
+		public boolean addPizzaToCart(int orderID, Toppings topping ) { 
+			for (AbstractPizza pizza: pizzaOrderList){
+				if(pizza.getPizzaOrderID() == orderID){
+					//checking if the topping exists in the topping list 
+					if(!pizza.getToppingList().contains(topping)){
+						//add if it doesn't exist
+						pizza.getToppingList().add(topping);
+						//update the pizza price
+						double price = pizza.getPriceWithoutToppings() + toppings.getPrice(topping);
+						pizza.setTotalPrice(price);
+						return true; //added 
+					}
+					else{
+						return false;
+					}
+				}
+			}
+		
+		}
+	//	
+	//	public boolean addNewToppingToPizza(int orderID, Toppings topping) { Temi
+	//		
+	//	}
+	//	
+	//	public boolean removeToppingFromPizza(int orderID, Toppings topping) { Temi
+	//		
+	//	}
+	//	
+	//	public boolean isThereAnyUncookedPizza() { Temi
+	//		
+	//	}
+	//	
+		public double checkout() throws Exception { // Van
+			double price = 0.0;
+			if (!isThereAnyUncookedPizza()) {
+				for(AbstractPizza pizza: pizzaOrderList) {
+					price += pizza.getTotalPrice();
+				}
+			} else {
+				throw new Exception("Some pizzas are still undercooked!");
+			}
+			return price;
+		}
+	//	
+		public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) { // Van
+			AbstractPizza pizza = getPizzaByOrderID(orderID);
+			cookingStrategy.cook(pizza);
+			if(cookingStrategyType.toString() == "BRICK_OVEN"){
+				brickStrategy.cook(pizza);
+			} else if (cookingStrategyType.toString() == "MICROWAVE"){
+				microwaveStrategy.cook(pizza);
+			} else if (cookingStrategyType.toString() == "CONVENTIONAL_OVEN"){
+				conventionalStrategy.cook(pizza);
+			} else {
+				return false;
+			}
+			return true;
+		}
 }

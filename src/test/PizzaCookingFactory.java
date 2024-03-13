@@ -9,6 +9,13 @@ import enums.PizzaType;
 public class PizzaCookingFactory {
 	private List<Toppings> toppingList;
 
+	/**
+	 * This method creates a pizza based on the pizza type. It also increments the orderIDCounter value and
+	 * sets that value to the new pizza. It then returns the created pizza. It also returns null if the pizzatype is not
+	 * a valid pizzatype.
+	 * @param pizzatype
+	 * @return
+	 */
 	public AbstractPizza createPizza(PizzaType pizzatype) {
 		if (pizzatype == PizzaType.HAWAIIAN) {
 				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
@@ -22,10 +29,12 @@ public class PizzaCookingFactory {
 				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
 		        SupremePizza pizza = new SupremePizza(AbstractPizza.getOrderIDCounter());
 				return pizza;
-		} else {
+		} else if (pizzatype == PizzaType.VEGETARIAN) {
 				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
 		        VegetarianPizza pizza = new VegetarianPizza(AbstractPizza.getOrderIDCounter());
 				return pizza;
+		} else {
+			return null;
 		}
 	}
 }

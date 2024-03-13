@@ -1,5 +1,10 @@
 package enums;
 
+
+/**
+ * These are the toppings enums with their assigned cost value. There are methods that allow for setting the topping price
+ * and getting the topping price of the respective topping.
+ */
 public enum Toppings { // toppings enums
 	TOMATO(1.50),
 	CHEESE(2.00),

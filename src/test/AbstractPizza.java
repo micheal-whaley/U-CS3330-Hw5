@@ -27,7 +27,16 @@ public abstract class AbstractPizza {
 	}
 
 
-
+	/**
+	 * This constructor is used for the copy constructor
+	 * 
+	 * @param toppingList
+	 * @param priceWithoutToppings
+	 * @param totalPrice
+	 * @param pizzaOrderID
+	 * @param cookingStrategy
+	 * @param cookingPrice
+	 */
 	public AbstractPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
 			ICookingStrategy cookingStrategy, double cookingPrice) {
 		super();
@@ -39,7 +48,7 @@ public abstract class AbstractPizza {
 		this.cookingPrice = cookingPrice;
 	}
 
-
+	// getters and setters
 
 	public List<Toppings> getToppingList() {
 		return toppingList;

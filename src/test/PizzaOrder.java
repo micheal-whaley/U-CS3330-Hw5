@@ -8,6 +8,12 @@ import enums.Toppings;
 import interfaces.*;
 import enums.PizzaType;
 
+/**
+ * Pizza Order manages a list of pizzas with sets of toppings, prices, and cooking strategies.
+ * You can also add pizzas, take them away, and modify toppings.
+ * 
+ */
+
 public class PizzaOrder {
 	private PizzaCookingFactory pizzaFactory;
 	private ICookingStrategy cookingStrategy;
@@ -15,12 +21,17 @@ public class PizzaOrder {
 	ICookingStrategy microwaveStrategy = new MicrowaveCookingStrategy();
 	ICookingStrategy conventionalStrategy = new ConventionalOvenCookingStrategy();
 	private List<AbstractPizza> pizzaOrderList;
-	
+/**
+ * Initializes the pizza factory and list of pizza,
+ */
 	public PizzaOrder() {
 		this.pizzaFactory = new PizzaCookingFactory();
 		this.pizzaOrderList = new ArrayList<AbstractPizza>();
 	}
-	
+/**
+ * Prints the list of toppings for the pizza with the specified order ID.
+ * @param orderID the ID of Pizza order.
+ */	
 	public void printListOfToppingsByPizzaOrderID(int orderID) { // loops through order list and prints to string pizzas;
 		for(AbstractPizza p : pizzaOrderList) {
 			if (p.getPizzaOrderID() == orderID) {
@@ -28,6 +39,10 @@ public class PizzaOrder {
 			}
 		}
 	}
+ /**
+     * Prints the details of the pizza order including toppings and prices for the specified order ID.
+     * @param orderID the ID of the pizza order to print details for
+     */
 	public void printPizzaOrderCart(int orderID) {
 		for (AbstractPizza p: pizzaOrderList) { //loops through each abstractpizza object
 			if (p.getPizzaOrderID() == orderID) {
@@ -45,7 +60,12 @@ public class PizzaOrder {
 	}
 		
 
-	
+/**
+ * Adds pizza to order list
+ * @param orderID Id of pizza to be added
+ * @param topping To check for toppings
+ * @return returns true if successfully added, false if not.
+ */
 	public boolean addPizzaToCart(int orderID, Toppings topping ) { 
 		for (AbstractPizza pizza: pizzaOrderList){
 			if(pizza.getPizzaOrderID() == orderID){
@@ -75,7 +95,12 @@ public class PizzaOrder {
 		}
 		return null;	//returns null if order id does not exist 
 	}
-
+/**
+ * Adds new topping to a pizza, and then updates the price if it's found.
+ * @param orderID ID of pizza to modify.
+ * @param topping Topping to add to pizza.
+ * @return true if it was added, false if not.
+ */
 	public boolean addNewToppingToPizza(int orderID, Toppings topping) {
 		AbstractPizza pizza = getPizzaByOrderID(orderID);
 		if (pizza != null) {
@@ -95,7 +120,12 @@ public class PizzaOrder {
 		return false; // Pizza with given orderID not found
 	}
 	
-
+/**
+ * Subtracts a topping from the pizza, and the price is updated accordingly.
+ * @param orderID Order Id of pizza to modify.
+ * @param topping Topping that can be removed.
+ * @return true or false based on if it was removed or if it didn't exist.
+ */
 	public boolean removeToppingFromPizza(int orderID, Toppings topping) {
 		AbstractPizza pizza = getPizzaByOrderID(orderID);
 		if (pizza != null) {
@@ -114,7 +144,10 @@ public class PizzaOrder {
 		}
 		return false; // Pizza with given orderID not found
 	}
-	
+/**
+ * Checks if a pizza has a cooking strategy assigned.
+ * @return
+ */
 	public boolean isThereAnyUncookedPizza() {
 		for (AbstractPizza pizza : pizzaOrderList) {
 			if (pizza.getCookingStrategy() == null) {
@@ -124,7 +157,11 @@ public class PizzaOrder {
 		return false; // No uncooked pizzas found
 	}
 
-
+/**
+ * Calculates price of order and throws exception if any uncooked pizzas are found.
+ * @return the total price of pizza
+ * @throws Exception if any pizza has not been cooked yet.
+ */
 	public double checkout() throws Exception { // Van
 		double price = 0.0;
 		if (!isThereAnyUncookedPizza()) {
@@ -136,7 +173,12 @@ public class PizzaOrder {
 		}
 		return price;
 	}
-	
+/**
+ * Selects cooking stragety for the pizza.
+ * @param orderID
+ * @param cookingStrategyType
+ * @return
+ */
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) { // Van
 		AbstractPizza pizza = getPizzaByOrderID(orderID);
 		cookingStrategy.cook(pizza);

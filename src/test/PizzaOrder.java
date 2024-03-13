@@ -138,13 +138,18 @@ public class PizzaOrder {
 	
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) { // Van
 		AbstractPizza pizza = getPizzaByOrderID(orderID);
-		cookingStrategy.cook(pizza);
 		if(cookingStrategyType.toString() == "BRICK_OVEN"){
-			brickStrategy.cook(pizza);
+			ICookingStrategy brickStrategy = new BrickOvenCookingStrategy();
+			pizza.setCookingStrategy(brickStrategy);
+			pizza.getCookingStrategy().cook(pizza);
 		} else if (cookingStrategyType.toString() == "MICROWAVE"){
-			microwaveStrategy.cook(pizza);
+			ICookingStrategy microwaveStrategy = new MicrowaveCookingStrategy();
+			pizza.setCookingStrategy(microwaveStrategy);
+			pizza.getCookingStrategy().cook(pizza);
 		} else if (cookingStrategyType.toString() == "CONVENTIONAL_OVEN"){
-			conventionalStrategy.cook(pizza);
+			ICookingStrategy conventionalStrategy = new ConventionalOvenCookingStrategy();
+			pizza.setCookingStrategy(conventionalStrategy);
+			pizza.getCookingStrategy().cook(pizza);
 		} else {
 			return false;
 		}

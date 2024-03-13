@@ -67,6 +67,7 @@ public class PizzaOrder {
  * @return returns true if successfully added, false if not.
  */
 	public boolean addPizzaToCart(int orderID, Toppings topping ) { 
+		boolean state = false;
 		for (AbstractPizza pizza: pizzaOrderList){
 			if(pizza.getPizzaOrderID() == orderID){
 				//checking if the topping exists in the topping list 
@@ -76,15 +77,13 @@ public class PizzaOrder {
 					//update the pizza price
 					double price = pizza.getPriceWithoutToppings() + topping.getToppingPrice();
 					pizza.setTotalPrice(price);
-					return true; //added 
+					state = true; //added 
 				}
-				else{
-					return false;
-				}
+					
 			}
 		}
-			
-		}
+		return state;	
+	}
 
 	//	finds the pizza order with the given pizza order id and returns it.
 	public AbstractPizza getPizzaByOrderID(int orderID) { 

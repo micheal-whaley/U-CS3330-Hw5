@@ -17,9 +17,6 @@ import enums.PizzaType;
 public class PizzaOrder {
 	private PizzaCookingFactory pizzaFactory;
 	private ICookingStrategy cookingStrategy;
-	ICookingStrategy brickStrategy = new BrickOvenCookingStrategy();
-	ICookingStrategy microwaveStrategy = new MicrowaveCookingStrategy();
-	ICookingStrategy conventionalStrategy = new ConventionalOvenCookingStrategy();
 	private List<AbstractPizza> pizzaOrderList;
 /**
  * Initializes the pizza factory and list of pizza,
@@ -32,10 +29,10 @@ public class PizzaOrder {
  * Prints the list of toppings for the pizza with the specified order ID.
  * @param orderID the ID of Pizza order.
  */	
-	public void printListOfToppingsByPizzaOrderID(int orderID) { // loops through order list and prints to string pizzas;
+	public void printListOfToppingsByPizzaOrderID(int orderID) { // loops through order list and calls getToppingList() to print the toppings.
 		for(AbstractPizza p : pizzaOrderList) {
 			if (p.getPizzaOrderID() == orderID) {
-				System.out.println(p.toString());
+				System.out.println(p.getToppingList());
 			}
 		}
 	}
@@ -46,14 +43,14 @@ public class PizzaOrder {
 	public void printPizzaOrderCart(int orderID) {
 		for (AbstractPizza p: pizzaOrderList) { //loops through each abstractpizza object
 			if (p.getPizzaOrderID() == orderID) {
-				System.out.println("Order details for order" + orderID);
+				System.out.println("Order details for order: " + orderID);
 				System.out.println("Toppings");
 				for (Toppings topping: p.getToppingList()) {
 					System.out.println("" + topping);
 				}
-				System.out.println("Price without toppings:"+ p.getPriceWithoutToppings());
-				System.out.println("Total price" + p.getTotalPrice());
-				System.out.println("Cooking Strategey:" + p.getCookingStrategy() );
+				System.out.println("Price without toppings: "+ p.getPriceWithoutToppings());
+				System.out.println("Total price: " + p.getTotalPrice());
+				System.out.println("Cooking Strategy: " + p.getCookingStrategy() );
 			}
 		}
 		
@@ -66,23 +63,13 @@ public class PizzaOrder {
  * @param topping To check for toppings
  * @return returns true if successfully added, false if not.
  */
-	public boolean addPizzaToCart(int orderID, Toppings topping ) { 
-		boolean state = false;
-		for (AbstractPizza pizza: pizzaOrderList){
-			if(pizza.getPizzaOrderID() == orderID){
-				//checking if the topping exists in the topping list 
-				if(!pizza.getToppingList().contains(topping)){
-					//add if it doesn't exist
-					pizza.getToppingList().add(topping);
-					//update the pizza price
-					double price = pizza.getPriceWithoutToppings() + topping.getToppingPrice();
-					pizza.setTotalPrice(price);
-					state = true; //added 
-				}
-					
-			}
+	public boolean addPizzaToCart(PizzaType pizzaType) { 
+		AbstractPizza pizza = PizzaCookingFactory.createPizza(pizzaType);
+		pizzaOrderList.add(pizza);
+		if(pizzaOrderList.contains(pizza)){
+			return true;
 		}
-		return state;	
+		return false;
 	}
 
 	//	finds the pizza order with the given pizza order id and returns it.

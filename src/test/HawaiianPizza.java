@@ -44,7 +44,7 @@ public class HawaiianPizza extends AbstractPizza{
                 getTotalPrice(),
                 getPizzaOrderID(),
                 getOrderIDCounter(),
-                getCookingStrategy().toString(),
+                getCookingStrategy(),
                 getCookingPrice());
                 //Placeholder, will clean up later.
     }

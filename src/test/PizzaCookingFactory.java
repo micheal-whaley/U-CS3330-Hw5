@@ -16,7 +16,7 @@ public class PizzaCookingFactory {
 	 * @param pizzatype
 	 * @return
 	 */
-	public AbstractPizza createPizza(PizzaType pizzatype) {
+	public static AbstractPizza createPizza(PizzaType pizzatype) {
 		if (pizzatype == PizzaType.HAWAIIAN) {
 				AbstractPizza.setOrderIDCounter(AbstractPizza.getOrderIDCounter()+1);
 				HawaiianPizza pizza = new HawaiianPizza(AbstractPizza.getOrderIDCounter());

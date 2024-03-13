@@ -44,7 +44,7 @@ public class PizzaOrder {
 		
 	}
 		
-}
+
 	
 	public boolean addPizzaToCart(int orderID, Toppings topping ) { 
 		for (AbstractPizza pizza: pizzaOrderList){
@@ -62,6 +62,7 @@ public class PizzaOrder {
 					return false;
 				}
 			}
+		}
 			
 		}
 

@@ -2,6 +2,9 @@ package interfaces;
 
 import test.AbstractPizza;
 
+/**
+ * Cooking strategy for ConventionalOven this costs 8
+ */
 public class ConventionalOvenCookingStrategy implements ICookingStrategy {
 	
 	public boolean cook(AbstractPizza pizza){

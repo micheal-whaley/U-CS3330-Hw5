@@ -74,7 +74,7 @@ public class PizzaOrder {
 					//add if it doesn't exist
 					pizza.getToppingList().add(topping);
 					//update the pizza price
-					double price = pizza.getPriceWithoutToppings() + toppings.getPrice(topping);
+					double price = pizza.getPriceWithoutToppings() + topping.getToppingPrice();
 					pizza.setTotalPrice(price);
 					return true; //added 
 				}

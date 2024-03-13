@@ -15,6 +15,12 @@ public abstract class AbstractPizza {
 	private ICookingStrategy cookingStrategy;
 	private double cookingPrice;
 	
+	
+	/**
+	 * Initializes the base pizza and toppingList
+	 * @param orderID
+	 */
+	
 	public AbstractPizza(int orderID){
 		this.pizzaOrderID = orderID;
 		this.toppingList = new ArrayList<Toppings>();

@@ -14,4 +14,8 @@ public class ConventionalOvenCookingStrategy implements ICookingStrategy {
 		
 		return true;
 	}
+	
+	public String toString() {
+		return ("ConventionalOvenCookingStrategy");
+	}
 }

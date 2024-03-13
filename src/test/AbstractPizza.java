@@ -15,13 +15,28 @@ public abstract class AbstractPizza {
 	private ICookingStrategy cookingStrategy;
 	private double cookingPrice;
 	
+	
+	/**
+	 * Initializes the base pizza and toppingList
+	 * @param orderID
+	 */
+	
 	public AbstractPizza(int orderID){
 		this.pizzaOrderID = orderID;
 		this.toppingList = new ArrayList<Toppings>();
 	}
 
 
-
+	/**
+	 * This constructor is used for the copy constructor
+	 * 
+	 * @param toppingList
+	 * @param priceWithoutToppings
+	 * @param totalPrice
+	 * @param pizzaOrderID
+	 * @param cookingStrategy
+	 * @param cookingPrice
+	 */
 	public AbstractPizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID,
 			ICookingStrategy cookingStrategy, double cookingPrice) {
 		super();
@@ -33,7 +48,7 @@ public abstract class AbstractPizza {
 		this.cookingPrice = cookingPrice;
 	}
 
-
+	// getters and setters
 
 	public List<Toppings> getToppingList() {
 		return toppingList;

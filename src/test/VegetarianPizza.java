@@ -5,7 +5,11 @@ import java.util.List;
 import enums.Toppings;
 
 public class VegetarianPizza extends AbstractPizza{
-
+	/**
+	 * This constructor sets the default values of the vegetarian pizza respectively. It adds the toppings and adds them
+	 * to the topping list calculating the cost afterwards.
+	 * @param orderID
+	 */
     public VegetarianPizza(int orderID) {
         super(orderID);
         this.setPriceWithoutToppings(1.50); // price with no toppings
@@ -22,9 +26,16 @@ public class VegetarianPizza extends AbstractPizza{
         this.setTotalPrice(1.50+baseToppingCost);
     }
 
+    /**
+     * This is the copy constructor
+     * @param Pizza
+     */
     public VegetarianPizza(VegetarianPizza Pizza){
   	  super(Pizza.getToppingList(), Pizza.getPriceWithoutToppings(), Pizza.getTotalPrice(), Pizza.getPizzaOrderID(), Pizza.getCookingStrategy(), Pizza.getCookingPrice());
       }     
+    /**
+     * This method prints out all values related to the pizza class
+     */
       public String toString() {
         return String.format("Vegetarian Pizza Here is list of Toppings: %s, Price Without Toppings: %.2f, Total Price: %.2f, Pizza Order ID: %d, Order ID Counter: %d, Cooking Strategy: %s, Cooking Price: %.2f }",
                 getToppingList().toString(),

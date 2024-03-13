@@ -2,6 +2,9 @@ package interfaces;
 
 import test.AbstractPizza;
 
+/**
+ * Cooking strategy for the microwave. This costs 1.
+ */
 public class MicrowaveCookingStrategy implements ICookingStrategy {
 
 	public boolean cook(AbstractPizza pizza){
